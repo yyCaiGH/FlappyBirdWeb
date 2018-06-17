@@ -30,12 +30,19 @@ export class Birds extends Sprite{
         this.time = 0;
     }
     draw(){
-        const speed =1;
+        const speed =0.2;
         this.count = this.count+speed;
         if (this.index >= 2){
             this.count = 0;
         }
-        this.index = this.count;
+        this.index = Math.floor(this.count);
+        const g = 0.98/2.4;
+        const offsetUp = 30;
+        const offsetY = (g*this.time*(this.time-offsetUp))/2;
+        for (let i = 0;i<=2;i++){
+            this.birdsY[i] = this.y[i]+offsetY;
+        }
+        this.time ++;
         super.draw(
             this.img,
             this.clippingX[this.index], this.clippingY[this.index],

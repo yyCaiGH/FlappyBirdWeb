@@ -30,8 +30,22 @@ export class Main {
             .put('land',Land)
             .put('birds',Birds)
         ;
+        this.registerEvent();
         this.director.createPencil();
         //导演开始执行游戏
         this.director.run();
+    }
+    registerEvent(){
+        this.canvas.addEventListener('touchstart',e=>{
+            //屏蔽掉js的事件冒泡
+           e.preventDefault();
+           if (this.director.isGameOver){
+               console.log('游戏开始');
+               this.init();
+           }
+           else {
+                this.director.birdsEvent();
+           }
+        });
     }
 }

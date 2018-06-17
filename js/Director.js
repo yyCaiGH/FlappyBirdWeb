@@ -21,6 +21,13 @@ export class Director {
         this.dataStore.get('pencils').push(new UpPencil(top));
         this.dataStore.get('pencils').push(new DownPencil(top));
     }
+    birdsEvent(){
+        for (let i = 0;i<=2;i++){
+            this.dataStore.get('birds').y[i] =
+                this.dataStore.get('birds').birdsY[i];
+        }
+        this.dataStore.get('birds').time = 0;
+    }
     //导演控制不断重新绘制游戏
     run(){
         if (!this.isGameOver) {
