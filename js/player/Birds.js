@@ -41,7 +41,11 @@ export class Birds extends Sprite{
         const offsetY = (g*this.time*(this.time-offsetUp))/2;
         for (let i = 0;i<=2;i++){
             this.birdsY[i] = this.y[i]+offsetY;
+            /*if (this.birdsY[i]>=window.innerHeight-130){//让鸟儿不会一直掉下去
+                this.birdsY[i] = window.innerHeight-130;
+            }*/
         }
+
         this.time ++;
         super.draw(
             this.img,
